@@ -1,6 +1,9 @@
 //All global variable will be defined here
 //=========================================================================================================================================================================================================================================================================================//
 const APP_CONFIG = {
+  //Application Owner
+  applicationOwner: "Camarines Norte State College",
+
   //Application Title
   applicationName: "CNSC Project Default",
 
