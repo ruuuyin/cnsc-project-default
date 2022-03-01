@@ -8,11 +8,7 @@ const HomePage = () => {
   navigatorContext.setSelectedKey("home");
   return (
     <>
-      <PageHeader
-        title="Home"
-        subTitle="Announcement and Events"
-        onBack={() => {}}
-      />
+      <PageHeader title="Home" subTitle="Announcement and Events" />
       <ContentTab
         content={[
           {
