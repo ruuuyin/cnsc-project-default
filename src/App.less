@@ -1,8 +1,10 @@
 @import "~antd/lib/style/themes/default.less";
 @import "~antd/dist/antd.less";
 
+@body-color: #d9d9d9;
+
 body {
-  background-color: #d9d9d9;
+  background-color: @body-color;
 }
 
 .ant-layout-header {
@@ -27,4 +29,18 @@ body {
 
 .ant-page-header {
   background-color: #fff;
+}
+
+.ant-tabs-nav {
+  background-color: #fff;
+}
+
+.ant-tabs-tab:first-child {
+  margin-left: 20px;
+}
+
+.base-container {
+  margin: 10px 20px;
+  background-color: #fff;
+  padding: 10px;
 }

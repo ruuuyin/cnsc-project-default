@@ -1,4 +1,4 @@
-import { Affix, Col, Layout, Row, Space, Typography } from "antd";
+import { Affix, Layout, Row, Space, Typography } from "antd";
 import React from "react";
 import Logo from "../logo/Logo";
 import APP_CONFIG from "../../../data/static/config";
