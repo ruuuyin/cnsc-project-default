@@ -1,15 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Affix, Layout, Menu } from "antd";
 import navigations from "../../../data/static/navigation";
+import { useNavigate } from "react-router-dom";
+import NavigatorContext from "../../../service/context/NavigatorContext";
 
 const CustomSider = () => {
+  let navigatorContext = useContext(NavigatorContext);
+  let navigate = useNavigate();
+  const _handleNavigation = (e) => {
+    let menu = navigations.find((item) => {
+      return item.uKey === e.key;
+    });
+
+    if (menu === undefined) {
+      menu = navigations.filter((item) => item.basePath === null);
+      console.log(menu);
+      menu.forEach((item) => {
+        item.sub.forEach((subItem) => {
+          if (subItem.uKey === e.key) {
+            navigate(subItem.basePath);
+          }
+        });
+      });
+    } else {
+      navigate(menu.basePath);
+    }
+  };
+
   return (
     <Affix offsetTop={64}>
       <Layout.Sider collapsible theme="light">
         <Menu
           mode="inline"
-          defaultSelectedKeys={[navigations[0].uKey]}
+          defaultSelectedKeys={[navigatorContext.selectedKey]}
+          selectedKeys={[navigatorContext.selectedKey]}
           style={{ height: "90vh", borderRight: 0 }}
+          onClick={_handleNavigation}
         >
           {navigations.map((navigation, index) => {
             if (navigation.basePath === null) {

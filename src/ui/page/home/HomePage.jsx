@@ -1,35 +1,39 @@
 import { PageHeader } from "antd";
-import React from "react";
+import React, { useContext } from "react";
 import ContentTab from "../../component/tabs/ContentTab";
-import AdminLayout from "../_base/AdminLayout";
+import NavigatorContext from "../../../service/context/NavigatorContext";
 
 const HomePage = () => {
+  const navigatorContext = useContext(NavigatorContext);
+  navigatorContext.setSelectedKey("home");
   return (
-    <AdminLayout>
-      <>
-        <PageHeader title="Home" />
-        <ContentTab
-          content={[
-            {
-              title: "Tab1",
-              key: "tab2",
-              content: <div className="base-container">"content3"</div>,
-            },
+    <>
+      <PageHeader
+        title="Home"
+        subTitle="Announcement and Events"
+        onBack={() => {}}
+      />
+      <ContentTab
+        content={[
+          {
+            title: "Tab1",
+            key: "tab2",
+            content: <div className="base-container">Content Here</div>,
+          },
 
-            {
-              title: "Tab2",
-              key: "tab3",
-              content: <div className="base-container">"content3"</div>,
-            },
-            {
-              title: "Tab1",
-              key: "tab4",
-              content: <div className="base-container">"content3"</div>,
-            },
-          ]}
-        />
-      </>
-    </AdminLayout>
+          {
+            title: "Tab2",
+            key: "tab3",
+            content: <div className="base-container">Content Here</div>,
+          },
+          {
+            title: "Tab1",
+            key: "tab4",
+            content: <div className="base-container">Content Here</div>,
+          },
+        ]}
+      />
+    </>
   );
 };
 

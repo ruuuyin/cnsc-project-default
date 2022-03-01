@@ -4,15 +4,16 @@ import CustomFooter from "../../component/footer/CustomFooter";
 import CustomHeader from "../../component/header/CustomHeader";
 import CustomSider from "../../component/sider/CustomSider";
 import navigations from "../../../data/static/navigation";
+import { Outlet } from "react-router-dom";
 
-const AdminLayout = (props) => {
+const AdminLayout = () => {
   return (
     <Layout>
       <CustomHeader />
       <Layout>
         <CustomSider />
         <Layout.Content>
-          {props.children}
+          <Outlet />
           <CustomFooter />
         </Layout.Content>
       </Layout>

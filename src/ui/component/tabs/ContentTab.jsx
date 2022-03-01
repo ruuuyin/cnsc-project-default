@@ -3,7 +3,7 @@ import React from "react";
 
 const ContentTab = ({ content }) => {
   return (
-    <Tabs>
+    <Tabs className="custom-tabs">
       {content.map((item) => {
         return (
           <Tabs.TabPane tab={item.title} key={item.key}>
