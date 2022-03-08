@@ -1,28 +1,20 @@
-import axios from "axios";
-
-const TOKEN_PREFIX = "Bearer";
-const getToken = () => localStorage.getItem("jws");
+import axiosInstance from "../static/axiosInstance";
+import APP_CONFIG from "../static/config";
 
 const create = (url) => {
   return async (data) =>
-    axios({
+    axiosInstance({
       method: "post",
-      url: `${url}`,
-      headers: {
-        Authorization: `${TOKEN_PREFIX} ${getToken()}`,
-      },
+      url: `${APP_CONFIG.endpointPrefix}${url}`,
       data: data,
     });
 };
 
 const update = (url) => {
   return async (data) => {
-    return axios({
+    return axiosInstance({
       method: "put",
-      url: `${url}`,
-      headers: {
-        Authorization: `${TOKEN_PREFIX} ${getToken()}`,
-      },
+      url: `${APP_CONFIG.endpointPrefix}${url}/${data.id}`,
       data: data,
     });
   };
@@ -30,12 +22,9 @@ const update = (url) => {
 
 const remove = (url) => {
   return (data) => {
-    return axios({
+    return axiosInstance({
       method: "delete",
-      url: `${url}/${data.id}`,
-      headers: {
-        Authorization: `${TOKEN_PREFIX} ${getToken()}`,
-      },
+      url: `${APP_CONFIG.endpointPrefix}${url}/${data.id}`,
       data: data,
     });
   };
@@ -43,12 +32,9 @@ const remove = (url) => {
 
 const retrieve = (url) => {
   return async (data) => {
-    return axios({
+    return axiosInstance({
       method: "get",
-      url: `${url}/${data.id}`,
-      headers: {
-        Authorization: `${TOKEN_PREFIX} ${getToken()}`,
-      },
+      url: `}${url}/${data.id}`,
       data: data,
     });
   };
@@ -56,12 +42,9 @@ const retrieve = (url) => {
 
 const retrieveList = (url) => {
   return async (params) => {
-    return axios({
+    return axiosInstance({
       method: "get",
-      url: `${url}/list`,
-      headers: {
-        Authorization: `${TOKEN_PREFIX} ${getToken()}`,
-      },
+      url: `${APP_CONFIG.endpointPrefix}${url}/list`,
       params: { params },
     });
   };
